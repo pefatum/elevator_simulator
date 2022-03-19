@@ -1,5 +1,4 @@
 class Building:
-
     def __init__(self, floors=10):
         self.floors = floors
 
