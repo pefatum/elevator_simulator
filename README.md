@@ -14,4 +14,4 @@ This is a program that simulates an elevator in a building
 ## Assumptions
 1. Passengers do not want to get on an elevator going in the other direction
 2. It takes one unit of time for the elevator to stop at a floor and let passengers off or on
-3. The elevator travels more often than it receives requests (more optimal to calculate next destination after a new command has been entered than before each movement)
+3. If two commands are entered during the same unit of time, go towards the command entered first
