@@ -13,5 +13,8 @@ This is a program that simulates an elevator in a building
 
 ## Assumptions
 1. Passengers do not want to get on an elevator going in the other direction
-2. It takes one unit of time for the elevator to stop at a floor and let passengers off or on
+2. It takes one unit of time for the elevator to stop at a floor and let passengers off or on. Passengers are given that unit of time to select a floor upon getting on the elevator
 3. If two commands are entered during the same unit of time, go towards the command entered first
+
+## Elevator Algorithm
+Generally, the algorithm is written so that the elevator will continue in the direction it is going until it reaches the top or bottom. Once that is done, it will go the other direction if there are any commands that tell it to go that way. Otherwise, it will remain idle.

@@ -74,6 +74,7 @@ class Elevator:
             if stop.floor == self.current_floor and (
                 (stop.direction == self.current_direction or not stop.direction)
                 or stop.floor == self.current_destination
+                or not self.current_direction
             ):
                 stopped = True
                 self.stops.pop(index)
