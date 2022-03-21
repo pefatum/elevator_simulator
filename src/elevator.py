@@ -11,7 +11,7 @@ class Elevator:
         self.current_direction = None
         self.current_destination = None
         self.stops: List[ElevatorRequest] = []
-    
+
     def __get_number_of_higher_stops(self):
         num_stops = 0
         for stop in self.stops:
@@ -32,7 +32,7 @@ class Elevator:
             if stop.floor > highest_requested_floor:
                 highest_requested_floor = stop.floor
         return highest_requested_floor
-    
+
     def __calculate_lowest_floor(self):
         lowest_requested_floor = float("inf")
         for stop in self.stops:
@@ -52,9 +52,15 @@ class Elevator:
                 else ElevatorRequest.DOWN
             )
         else:
-            if self.current_direction == ElevatorRequest.DOWN and self.__get_number_of_lower_stops() == 0:
+            if (
+                self.current_direction == ElevatorRequest.DOWN
+                and self.__get_number_of_lower_stops() == 0
+            ):
                 self.current_direction = ElevatorRequest.UP
-            elif self.current_direction == ElevatorRequest.UP and self.__get_number_of_higher_stops() == 0:
+            elif (
+                self.current_direction == ElevatorRequest.UP
+                and self.__get_number_of_higher_stops() == 0
+            ):
                 self.current_direction = ElevatorRequest.DOWN
 
         if self.current_direction == ElevatorRequest.DOWN:
@@ -66,8 +72,8 @@ class Elevator:
     def add_request(self, floor: int, direction=None):
         self.stops.append(ElevatorRequest(floor, direction))
 
-    def __stop_at_current_floor(self):
-        stopped = False
+    def __process_stop_at_current_floor(self):
+        floor = None
         index = 0
         for i in range(len(self.stops)):
             stop = self.stops[index]
@@ -76,19 +82,17 @@ class Elevator:
                 or stop.floor == self.current_destination
                 or not self.current_direction
             ):
-                stopped = True
+                floor = stop.floor
                 self.stops.pop(index)
             else:
                 index += 1
 
-        if stopped:
-            print("Elevator stopped at floor " + str(self.current_floor))
-
-        return stopped
+        return floor
 
     def move_elevator(self):
-        if self.__stop_at_current_floor():
-            return
+        floor = self.__process_stop_at_current_floor()
+        if floor:
+            return floor
 
         self.__update_elevator_goal()
 

@@ -33,7 +33,7 @@ def call_elevator(building: Building, elevator: Elevator):
 
         elevator.add_request(floor, direction)
     except ValueError:
-        raise ValueError("Invalid request entered.")
+        print("Invalid request entered.")
 
 
 def enter_floor(building: Building, elevator: Elevator):
@@ -45,11 +45,13 @@ def enter_floor(building: Building, elevator: Elevator):
             raise ValueError
         elevator.add_request(floor)
     except ValueError:
-        raise ValueError("Invalid floor entered.")
+        print("Invalid floor entered.")
 
 
 def proceed(elevator: Elevator):
-    elevator.move_elevator()
+    floor = elevator.move_elevator()
+    if floor:
+        print("Elevator stopped at floor " + str(floor))
 
 
 def simulator():
@@ -73,7 +75,6 @@ def simulator():
             else:
                 print("Please input a valid option.")
         except ValueError as e:
-            print(e)
             print("Please input a valid option.")
 
 
