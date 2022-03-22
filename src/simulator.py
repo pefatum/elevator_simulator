@@ -74,7 +74,7 @@ def simulator():
                 exit()
             else:
                 print("Please input a valid option.")
-        except ValueError as e:
+        except ValueError:
             print("Please input a valid option.")
 
 

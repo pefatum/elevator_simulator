@@ -16,8 +16,7 @@ Here is how the elevator decides which floor to go to:
 1. If the elevator is not heading in any direction and has no stops requested, it will remain idle
 2. If the elevator is not heading in any direction and has stops requested, it will head in the direction of the oldest request
 3. The elevator will continue in its current direction until it reaches the last floor in that direction (highest or lowest)
-4. Once it has reached the final floor in a certain direction, it will head in the opposite direction if there are any requests the other way
-5. If there are no requests, the elevator will remain idle
+4. Once it has reached the final floor in a certain direction, it will head in the opposite direction if there are any requests the other way. If there are no requests, the elevator will be idle
 
 ## Assumptions
 1. Passengers do not want to get on an elevator going in the other direction
